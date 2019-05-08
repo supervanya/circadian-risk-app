@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/circadian-risk-app/static/css/main.b4aa49b9.chunk.css",
+    "main.js": "/circadian-risk-app/static/js/main.2a7067f9.chunk.js",
+    "main.js.map": "/circadian-risk-app/static/js/main.2a7067f9.chunk.js.map",
+    "runtime~main.js": "/circadian-risk-app/static/js/runtime~main.b43152e2.js",
+    "runtime~main.js.map": "/circadian-risk-app/static/js/runtime~main.b43152e2.js.map",
+    "static/js/2.ede10acd.chunk.js": "/circadian-risk-app/static/js/2.ede10acd.chunk.js",
+    "static/js/2.ede10acd.chunk.js.map": "/circadian-risk-app/static/js/2.ede10acd.chunk.js.map",
+    "index.html": "/circadian-risk-app/index.html",
+    "precache-manifest.719c9f508d68b53dc37d27d771c13d31.js": "/circadian-risk-app/precache-manifest.719c9f508d68b53dc37d27d771c13d31.js",
+    "service-worker.js": "/circadian-risk-app/service-worker.js",
+    "static/css/main.b4aa49b9.chunk.css.map": "/circadian-risk-app/static/css/main.b4aa49b9.chunk.css.map",
+    "static/media/logo.svg": "/circadian-risk-app/static/media/logo.5d5d9eef.svg"
+  }
+}
