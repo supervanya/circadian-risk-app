@@ -23,25 +23,21 @@ class App extends React.Component {
   };
   
   // returns either a spinner or the users 
-  renderUsers(){
-      if (!this.state.isLoaded) {
-        return(
-          <img src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></img>
-        )
-      } else {
-        return(
-          <div>
-            {this.state.users.map(user => (
-              <div className="person">
-                <img className="avatar" src={user.avatar}></img>
-                <h2>{user.first_name}</h2>
-                <p>Email: <b>{user.email}</b></p>
-              </div>
-            ))}
-          </div>
-        )  
-      }
-    }
+  renderUsers() {
+    return (
+      <div>
+        {this.state.users.map(user => (
+          <Card key={user.id} avatar={user.avatar} email = {user.email} name = {user.first_name}  />
+        ))}
+      </div>
+    )    
+  }
+
+  renderLoader(){
+    return (
+      <img alt="Loading..." src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></img>
+    )
+  }
 
   // renders the main page
   render() {
@@ -52,22 +48,23 @@ class App extends React.Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React!!
-          </a>
-
         {/* button to load the random users */}
         <button className="b1" onClick={() => this.getUsers()}>Load users</button>
         </header>
-        {this.renderUsers()}
+        { this.state.isLoaded ? this.renderUsers() : this.renderLoader() }
       </div>
     );
   }
+}
+
+function Card(props){
+  return(
+    <div className="person">
+      <img alt="Avatar" className="avatar" src={props.avatar}></img>
+      <h2>{props.name}</h2>
+      <p>Email: <b>{props.email}</b></p>
+    </div>
+  )
 }
 
 export default App;
