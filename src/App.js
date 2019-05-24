@@ -8,18 +8,32 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLoaded: false,
-      users: null
+      users: null,
+      Height: "100vh"
     };
   }
 
   getUsers = async () => {
+    this.setState(
+      {...this.setState,
+        isLoaded: false,
+        Height: "50vh"})
+
+
     let num = Math.random() * (+4 - +1) + +1;
     let api_route = `https://reqres.in/api/users?page=${num}`;
     const response = await fetch(api_route);
     const users = await response.json();
-    this.setState(
-      {isLoaded: true, 
-       users: users.data});
+
+
+    setTimeout(() => {
+      this.setState(
+        {...this.setState,
+          isLoaded: true,
+          users: users.data});  
+    },1000)
+
+
   };
   
   // returns either a spinner or the users 
@@ -35,7 +49,7 @@ class App extends React.Component {
 
   renderLoader(){
     return (
-      <img alt="Loading..." src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></img>
+      <img id="spinner" alt="Loading..." src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></img>
     )
   }
 
@@ -43,7 +57,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="App-header" style={{height:this.state.Height}}>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -51,7 +65,9 @@ class App extends React.Component {
         {/* button to load the random users */}
         <button className="b1" onClick={() => this.getUsers()}>Load users</button>
         </header>
-        { this.state.isLoaded ? this.renderUsers() : this.renderLoader() }
+        <div id="spinnerDiv" className="cards">
+          { this.state.isLoaded ? this.renderUsers() : this.renderLoader() }
+        </div>
       </div>
     );
   }
@@ -62,7 +78,8 @@ function Card(props){
     <div className="person">
       <img alt="Avatar" className="avatar" src={props.avatar}></img>
       <h2>{props.name}</h2>
-      <p>Email: <b>{props.email}</b></p>
+      <p>Email:</p>
+      <p><b>{props.email}</b></p>
     </div>
   )
 }
